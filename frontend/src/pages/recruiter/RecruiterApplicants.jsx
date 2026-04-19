@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
-import { 
-    User, Mail, Phone, ExternalLink, 
+import {
+    User, Mail, Phone, ExternalLink,
     CheckCircle, XCircle, Clock, ArrowLeft,
     ChevronRight, Briefcase
 } from 'lucide-react';
@@ -21,7 +21,7 @@ const RecruiterApplicants = () => {
                 const token = localStorage.getItem('token');
                 const config = { headers: { Authorization: `Bearer ${token}` } };
                 const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
-                
+
                 // Fetch job details (we could optimize this if we had a single job endpoint)
                 const { data: myJobs } = await axios.get(`${backendUrl}/recruiter/my-jobs`, config);
                 const currentJob = myJobs.find(j => j._id === jobId);
@@ -44,13 +44,13 @@ const RecruiterApplicants = () => {
             const token = localStorage.getItem('token');
             const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
             const endpoint = status === 'shortlisted' ? 'accept' : 'reject';
-            
+
             await axios.put(`${backendUrl}/recruiter/application/${applicationId}/${endpoint}`, {}, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
             // Update local state
-            setApplicants(prev => prev.map(app => 
+            setApplicants(prev => prev.map(app =>
                 app._id === applicationId ? { ...app, status } : app
             ));
         } catch (err) {
@@ -74,7 +74,7 @@ const RecruiterApplicants = () => {
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                         <h1 className="text-2xl font-bold text-surface-900 flex items-center gap-2">
-                             Applicants for {job?.title || 'Job'}
+                            Applicants for {job?.title || 'Job'}
                         </h1>
                         <p className="text-surface-500 mt-1">{applicants.length} candidates applied</p>
                     </div>
@@ -97,7 +97,7 @@ const RecruiterApplicants = () => {
                 <div className="grid gap-4">
                     <AnimatePresence>
                         {applicants.map((app, i) => (
-                            <motion.div 
+                            <motion.div
                                 key={app._id}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -112,10 +112,9 @@ const RecruiterApplicants = () => {
                                         <div>
                                             <h3 className="font-bold text-surface-900 flex items-center gap-2">
                                                 {app.applicantName}
-                                                <span className={`text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full ${
-                                                    app.status === 'shortlisted' ? 'bg-green-100 text-green-700' :
-                                                    app.status === 'rejected' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'
-                                                }`}>
+                                                <span className={`text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full ${app.status === 'shortlisted' ? 'bg-green-100 text-green-700' :
+                                                        app.status === 'rejected' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'
+                                                    }`}>
                                                     {app.status}
                                                 </span>
                                             </h3>
@@ -128,9 +127,9 @@ const RecruiterApplicants = () => {
                                     </div>
 
                                     <div className="flex items-center gap-3">
-                                        <a 
-                                            href={app.resumeLink} 
-                                            target="_blank" 
+                                        <a
+                                            href={app.resumeLink}
+                                            target="_blank"
                                             rel="noopener noreferrer"
                                             className="btn-secondary flex items-center gap-2 py-2 px-4 whitespace-nowrap"
                                         >
@@ -139,14 +138,14 @@ const RecruiterApplicants = () => {
 
                                         {app.status === 'applied' && (
                                             <div className="flex items-center gap-2 pl-4 border-l border-surface-200">
-                                                <button 
+                                                <button
                                                     onClick={() => handleStatusUpdate(app._id, 'shortlisted')}
                                                     className="p-2 rounded-lg bg-green-50 text-green-600 hover:bg-green-600 hover:text-white transition-all shadow-sm"
                                                     title="Accept Candidate"
                                                 >
                                                     <CheckCircle size={20} />
                                                 </button>
-                                                <button 
+                                                <button
                                                     onClick={() => handleStatusUpdate(app._id, 'rejected')}
                                                     className="p-2 rounded-lg bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all shadow-sm"
                                                     title="Reject Candidate"
