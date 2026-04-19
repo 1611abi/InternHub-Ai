@@ -185,7 +185,7 @@ const ResourceDetails = () => {
                             <Download size={48} className="text-blue-500 mb-4 bg-blue-50 p-3 rounded-full" />
                             <h3 className="text-lg font-bold text-slate-800 mb-2">Download Document</h3>
                             <p className="text-slate-500 mb-6 text-sm">Get the PDF notes or roadmap layout.</p>
-                            <a href={`http://localhost:5000${resource.filePath}`} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                            <a href={`https://internhub-ai-dx1i.onrender.com${resource.filePath}`} target="_blank" rel="noopener noreferrer" className="btn-primary">
                                 Download File <Download size={16} className="ml-2" />
                             </a>
                         </div>

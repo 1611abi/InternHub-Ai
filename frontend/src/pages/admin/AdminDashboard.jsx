@@ -13,7 +13,7 @@ const AdminDashboard = () => {
             try {
                 const token = localStorage.getItem('token');
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+                const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
                 
                 const [statsRes, recruitersRes] = await Promise.all([
                     axios.get(`${backendUrl}/admin/platform-stats`, config),
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
             setVerifyingId(companyId);
             const token = localStorage.getItem('token');
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+            const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
 
             const { data: updatedCompany } = await axios.put(`${backendUrl}/admin/verify-recruiter/${companyId}`, {}, config);
             

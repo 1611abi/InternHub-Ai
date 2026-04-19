@@ -20,7 +20,7 @@ const RecruiterApplicants = () => {
             try {
                 const token = localStorage.getItem('token');
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+                const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
                 
                 // Fetch job details (we could optimize this if we had a single job endpoint)
                 const { data: myJobs } = await axios.get(`${backendUrl}/recruiter/my-jobs`, config);
@@ -42,7 +42,7 @@ const RecruiterApplicants = () => {
     const handleStatusUpdate = async (applicationId, status) => {
         try {
             const token = localStorage.getItem('token');
-            const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+            const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
             const endpoint = status === 'shortlisted' ? 'accept' : 'reject';
             
             await axios.put(`${backendUrl}/recruiter/application/${applicationId}/${endpoint}`, {}, {

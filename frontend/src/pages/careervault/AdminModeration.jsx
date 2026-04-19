@@ -169,7 +169,7 @@ const AdminModeration = () => {
 
                                     <div className="flex flex-col sm:flex-row lg:flex-col justify-center gap-3 shrink-0 lg:w-48">
                                         <a 
-                                            href={res.url || `http://localhost:5000${res.filePath}`} 
+                                            href={res.url || `https://internhub-ai-dx1i.onrender.com${res.filePath}`} 
                                             target="_blank" 
                                             rel="noopener noreferrer" 
                                             className="inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm rounded-xl transition-all"

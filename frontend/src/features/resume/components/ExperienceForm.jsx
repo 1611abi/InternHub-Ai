@@ -17,7 +17,7 @@ const ExperienceForm = () => {
         const key = `${entryId}-${bulletIndex}`;
         setAiLoadingBullet(key);
         try {
-            const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+            const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
             const token = localStorage.getItem('token');
             const res = await fetch(`${backendUrl}/resume/ai-enhance`, {
                 method: 'POST',

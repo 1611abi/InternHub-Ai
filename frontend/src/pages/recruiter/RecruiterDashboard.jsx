@@ -25,7 +25,7 @@ const RecruiterDashboard = () => {
         setIsSubmitting(true);
         try {
             const token = localStorage.getItem('token');
-            const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+            const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
             const { data } = await axios.post(`${backendUrl}/recruiter/create-company`, companyForm, {
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -44,7 +44,7 @@ const RecruiterDashboard = () => {
         setIsSubmitting(true);
         try {
             const token = localStorage.getItem('token');
-            const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+            const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
             
             // Convert comma separated string to array
             const payload = {
@@ -76,7 +76,7 @@ const RecruiterDashboard = () => {
         try {
             const token = localStorage.getItem('token');
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+            const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
             
             // Try fetching company
             try {

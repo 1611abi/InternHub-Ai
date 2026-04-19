@@ -20,7 +20,7 @@ const Auth = () => {
         setError('');
 
         try {
-            const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+            const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
             const endpoint = isLogin ? '/auth/login' : '/auth/register';
             const payload = isLogin ? { email, password } : { name, email, password, role };
 

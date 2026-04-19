@@ -22,7 +22,7 @@ const SeekerDashboard = () => {
             try {
                 const token = localStorage.getItem('token');
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+                const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
                 
                 // Fetch stats from profile
                 const { data: profile } = await axios.get(`${backendUrl}/profile`, config);

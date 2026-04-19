@@ -16,7 +16,7 @@ const Profile = () => {
         if (!token) { navigate('/login'); return; }
 
         const config = { headers: { Authorization: `Bearer ${token}` } };
-        const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+        const backendUrl = import.meta.env.VITE_API_URL || 'https://internhub-ai-dx1i.onrender.com/api';
         const { data } = await axios.get(`${backendUrl}/profile`, config);
         setProfile(data);
       } catch (error) {
