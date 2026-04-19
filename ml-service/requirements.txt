@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+sentence-transformers<3
+faiss-cpu
+spacy
+language-tool-python
+pymongo
+python-dotenv
+python-multipart
+PyPDF2
+pydantic
+requests
+motor
